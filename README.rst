@@ -20,6 +20,7 @@ Pass in json file of users
 Example:
 
 ::
+ 
     $ hr /path/to/inventory.json
 
 Example with --export:
