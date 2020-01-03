@@ -42,4 +42,4 @@ If virtualenv is not active then use:
 
 ::
 
-    $pipenv run make
+    $ pipenv run make
