@@ -6,7 +6,7 @@ CLI for adding/updating user accounts on linux servers
 Preparing for Development
 -------------------------
 
-1. Ensure `pip` and `pipenv` are installed
+1. Ensure ``pip`` and ``pipenv`` are installed
 2. Clone repository: ``https://github.com/MacOG/hr.git``
 3. ``cd`` into repository
 4. Fetch development dependencies ``make install``
