@@ -4,11 +4,11 @@ import subprocess
 
 from hr import users
 
-## encrypted version of password for bobby
+## encrypted version of password
 password = '$6$sNTVN2chgsPs0hEK$jog2VZqccDTP94RuZSbtknMoCGcWhvH5QYhnVkSgCPhKKmWciQQSQHLukSOIsE7AUxqVBn4M8nuiYcUJdyoHi.' 
 
 user_dict = {
-    'name': 'bobby',
+    'name': 'kevin',
     'groups': ['wheel', 'dev'],
     'password': password
 }
@@ -24,10 +24,10 @@ def test_users_add(mocker):
     subprocess.call.assert_called_with([
         'useradd',
         '-p',
-        user_dict['password'],
+        password,
         '-G',
-        user_dict['groups'],
-        user_dict['name'],
+        'wheel,dev',
+        'kevin',
     ])
 
 def test_users_remove(mocker):
@@ -40,7 +40,7 @@ def test_users_remove(mocker):
     subprocess.call.assert_called_with([
         'userdel',
         '-r',
-        user_dict['name'],
+        'kevin',
     ])
 
 def test_users_update(mocker):
@@ -54,10 +54,10 @@ def test_users_update(mocker):
     subprocess.call.assert_called_with([
         'usermod',
         '-p',
-        user_dict['password'],
+        password,
         '-G',
-        user_dict['groups'],
-        user_dict['name'],
+        'wheel,dev',
+        'kevin',
     ])
 
 def test_users_sync(mocker):
@@ -67,8 +67,8 @@ def test_users_sync(mocker):
     existing users. A list of existing usernames can be passed in or
     default users will be used.
     """
-    existing_user_names = ['cloud_user', 'bob']
-    user_info = [
+    existing_user_names = ['kevin', 'bob']
+    users_info = [
         user_dict,
         {
             'name': 'jose',
@@ -77,28 +77,28 @@ def test_users_sync(mocker):
         }
     ]
     mocker.patch('subprocess.call')
-    users.sync(user_info, existing_user_names)
+    users.sync(users_info, existing_user_names)
 
     subprocess.call.assert_has_calls([
         mocker.call([
             'usermod',
             '-p',
-            user_dict['password'],
+            password,
             '-G',
-            user_dict['gropus'],
-            user_dict['name'],
+            'wheel,dev',
+            'kevin',
         ]),
         mocker.call([
             'useradd',
             '-p',
-            user_dict['password'],
+            password,
             '-G',
-            user_dict['groups'],
-            user_dict['name'],
+            'wheel',
+            'jose',
         ]),
         mocker.call([
             'userdel',
             '-r',
-            user_dict['name'],
-        ])
+            'bob',
+        ]),
     ])
