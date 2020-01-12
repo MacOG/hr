@@ -1,0 +1,2 @@
+include README.rst
+recrusive-include tests *.py

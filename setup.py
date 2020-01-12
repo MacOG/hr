@@ -16,5 +16,5 @@ setup(
     install_requires=[],
     entry_points={
         'console_scripts': 'hr=hr.cli:main',
-    }
+    },
 )
