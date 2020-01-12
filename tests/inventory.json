@@ -1,4 +1,17 @@
-{
- 'name': 'bobby',
- 'groups': ['wheel', 'dev'],
- 'password': '$6$sNTVN2chgsPs0hEK$jog2VZqccDTP94RuZSbtknMoCGcWhvH5QYhnVkSgCPhKKmWciQQSQHLukSOIsE7AUxqVBn4M8nuiYcUJdyoHi.'
+[
+ {
+  'name': 'kevin',
+  'groups': ['wheel', 'dev'],
+  'password': '$6$XgeYrHPbDG1DAn1w$76KLRsBcoxIT.grYCkbY6nw1by6WDJeI0ZltJNW0xHFkpOisSF.RimmDH5o.C94C6EY8X7Ee7Othc/gKmhM4J.'
+ },
+ {
+   'name': 'lisa',
+   'groups': ['wheel'],
+   'password': '$6$BzOSs0zW2ftAwTxV$6Mm.S8DMRD1vRnOwapJb8V.3XpB0vFRzCbgJ4KC7PpEiB9uCQqrqyRQX3ijdyB.1yhU.p95XfwRwafkr2ZUUR/'
+ },
+ }
+   'name': 'jim',
+   'groups': [],
+   'password': '$6$S8gCQyvY6tCkzI6l$00nyjAp0CCjXdRAQ9mpyXnsPBuXg7ji3PLeCzMrEgoVoH9xTaNCC7RmUbElhk.P8dwGFt7TmEdO59PQneYKV70'
+ }
+]

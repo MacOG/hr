@@ -2,6 +2,8 @@ import pwd
 import subprocess
 import sys
 
+from .helpers import user_names
+
 def add(user_info):
     print(f"Adding user '{user_info['name']}'")
     try:
@@ -44,8 +46,7 @@ def update(user_info):
         print(f"Failed to update user '{user_info['name']}'")
         sys.exit(1)
 
-def sync(users, existing_user_names=None):
-    existing_user_names = (existing_user_names or _user_names())
+def sync(users, existing_user_names=user_names()):
     user_names = [user['name'] for user in users]
     for user in users:
         if user['name'] not in existing_user_names:
@@ -58,7 +59,3 @@ def sync(users, existing_user_names=None):
 
 def _groups_str(user_info):
     return ','.join(user_info['groups'] or [])
-
-def _user_names():
-    return [user.pw_name for user in pwd.getpwall()
-        if user.pw_uid >= 1000 and 'home' in user.pw_dir]
